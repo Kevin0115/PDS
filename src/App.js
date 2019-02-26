@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="site-header">
-          <img src={MedicalIcon} />
+          <img src={MedicalIcon} alt=""/>
           <p>
             Patient Distribution System
           </p>

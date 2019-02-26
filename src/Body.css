@@ -11,3 +11,27 @@
 .spinner-wrapper {
   height: 86vh;
 }
+
+.reload-btn {
+  position: absolute;
+  top: 20px;
+  right: 8px;
+  background-color: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.reload-btn:focus {
+  outline: 0;
+}
+
+.reload {
+  height: 40px;
+  width: auto;
+}
+
+.reload:hover {
+  opacity: 0.4;
+}

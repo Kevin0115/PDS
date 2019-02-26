@@ -3,6 +3,7 @@ import './Body.css';
 
 import ClinicItem from './ClinicItem.js';
 import LoadingSpinner from './LoadingSpinner.js';
+import Reload from './images/reload.svg';
 
 class Body extends Component {
   constructor(props) {
@@ -59,6 +60,9 @@ class Body extends Component {
   render() {
     return (
       <div className="body">
+        <button className="reload-btn" onClick={this._refreshPage}>
+          <img className="reload" src={Reload} alt="Reload" />
+        </button>
         {this._renderClinics()}
       </div>
     );
