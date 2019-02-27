@@ -51,7 +51,7 @@ class ClinicItem extends Component {
     return this.props.patients.map((item, index) => {
       return (
         <button key={index} className="patient-btn" onClick={this._showModal.bind(this, index)}>
-          <p key={index}>{item.name}: {item.careCard}</p>
+          <p key={index}>{item.name}: {item.care_card}</p>
         </button>
       )
     });
@@ -94,10 +94,10 @@ class ClinicItem extends Component {
               Full Name: {this.state.modalContent.name}
             </p>
             <p className="patient-info">
-              Care Card Number: {this.state.modalContent.careCard}
+              Care Card Number: {this.state.modalContent.care_card}
             </p>
             <p className="patient-info">
-              Phone Number: TO BE POPULATED
+              Phone Number: {this.state.modalContent.phone}
             </p>
           </div>
         </Modal>
@@ -109,7 +109,7 @@ class ClinicItem extends Component {
             {this.props.address}
           </p>
           <p className="waittime">
-            Wait Time: {Math.max(0, this.props.patients.length*0.5 - 0.5)} hours
+            Wait Time: {this.props.wait_time} hours
           </p>
           <button className="pop-btn" onClick={this._popQueue}>
             Pop Queue
