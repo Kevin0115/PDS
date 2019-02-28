@@ -4,6 +4,7 @@ import './ClinicItem.css';
 
 import Close from './images/close.svg';
 
+// Custom styling used for patient info modal
 const modalStyle = {
   content : {
     height: '400px',
@@ -21,18 +22,21 @@ class ClinicItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalContent: {},
+      modalContent: {}, // Re-populated every time a patient is pressed
     };
+    // Binds necessary functions to 'this'
     this._popQueue = this._popQueue.bind(this);
     this._showModal = this._showModal.bind(this);
     this._hideModal = this._hideModal.bind(this);
     this._handleEsc = this._handleEsc.bind(this);
   }
 
+  // Binds the ESC key for convenience of exiting modal
   componentWillMount() {
     document.addEventListener("keydown", this._handleEsc, false);
   }
 
+  // The following two functions define modal open/close behaviour
   _showModal(index) {
     this.setState({showModal: true, modalContent: this.props.patients[index]});
   }
@@ -41,12 +45,14 @@ class ClinicItem extends Component {
     this.setState({showModal: false});
   }
 
+  // Wrapper for hideModal in case you want to press ESC instead of the X on screen
   _handleEsc(e){
     if(e.keyCode === 27) {
       this._hideModal();
     }
   }
   
+  // Renders each patient as a clickable button to open a modal with their info
   _renderPatients() {
     return this.props.patients.map((item, index) => {
       return (
@@ -57,6 +63,7 @@ class ClinicItem extends Component {
     });
   }
 
+  // Per clinic, gives the option to discharge the top patient in the list
   _popQueue() {
     fetch('http://kevinpi.ddns.net/clinics/' + this.props.clinic_id + '/patients', {
       method: 'DELETE',
@@ -99,6 +106,9 @@ class ClinicItem extends Component {
             <p className="patient-info">
               Phone Number: {this.state.modalContent.phone}
             </p>
+            {/* <p className="patient-info">
+              Heart Rate: {this.state.modalContent.heart_rate} BPM
+            </p> */}
           </div>
         </Modal>
         <div className="header">

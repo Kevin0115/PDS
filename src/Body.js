@@ -9,16 +9,18 @@ class Body extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clinicList: [],
-      isLoading: false,
+      clinicList: [], // This will be populated upon load
+      isLoading: false, // Indicates when we are waiting for an HTTP request
     };
     this._refreshPage = this._refreshPage.bind(this);
   }
 
+  // Re-fetches clinic data from server, upon refresh
   _refreshPage() {
     this._retrieveClinicData();
   }
 
+  // API call to server to retrieve all clinic data
   _retrieveClinicData() {
     this.setState({isLoading: true});
     fetch('http://kevinpi.ddns.net/clinics', {
@@ -28,7 +30,11 @@ class Body extends Component {
       if (response.error) {
         console.warn('Error!', response.error);
       } else {
-        this.setState({clinicList: response, isLoading: false});
+        console.log(response);
+        this.setState({
+          clinicList: response.sort((a, b) => (a.clinic_id - b.clinic_id)),
+          isLoading: false
+        });
       }
       // Gonna wanna set isLoading false HERE instead, with error message if needed
     })
@@ -37,11 +43,12 @@ class Body extends Component {
     });
   }
 
+  // Pre-loading work done here; namely, initial data fetching
   componentWillMount() {
-    document.addEventListener("keydown", this._handleEsc, false);
     this._retrieveClinicData();
   }
   
+  // Renders all clinics in database in clean UI; when loading, shows spinner
   _renderClinics() {
     return this.state.isLoading ?
     (

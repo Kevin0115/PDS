@@ -8,29 +8,29 @@ export const ClinicData = [
     "long": -123.252814,
     "patients": [
       {
-        "name": "Ochoa Vega",
-        "care_card": 732552420,
-        "phone": 6045872072
+          "name": "Ochoa Vega",
+          "care_card": 732552420,
+          "phone": 6045872072
       },
       {
-        "name": "Iva Calderon",
-        "care_card": 136968486,
-        "phone": 6043504391
+          "name": "Iva Calderon",
+          "care_card": 136968486,
+          "phone": 6043504391
       },
       {
-        "name": "Lucy Donovan",
-        "care_card": 54163231,
-        "phone": 6048720497
+          "name": "Kevin Choi",
+          "care_card": 54163231,
+          "phone": 7783233815
       },
       {
-        "name": "Helen Padilla",
-        "care_card": 146916810,
-        "phone": 6041711806
+          "name": "Helen Padilla",
+          "care_card": 146916810,
+          "phone": 6041711806
       },
       {
-        "name": "Bruce Parrish",
-        "care_card": 956130639,
-        "phone": 6043878458
+          "name": "Bruce Parrish",
+          "care_card": 956130639,
+          "phone": 6043878458
       }
     ]
   },
